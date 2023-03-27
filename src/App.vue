@@ -2,6 +2,7 @@
   import HeaderAppComponent from './components/HeaderAppComponent.vue';
   import MainAppComponent from './components/MainAppComponent.vue';
   import FooterAppComponent from './components/FooterAppComponent.vue';
+  import { store } from './store'
   import axios from 'axios';
 
   export default { 
@@ -10,10 +11,16 @@
       MainAppComponent,
       FooterAppComponent
     },
+    data(){
+      return {
+        store,
+      }
+    },
     created() {
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=25&offset=0')
       .then((response) => {
-        console.log(response)
+        console.log(response.data.data);
+        this.store.cards = response.data.data;
       })
     },
    }

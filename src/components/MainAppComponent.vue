@@ -1,10 +1,23 @@
 <script>
 import MainFilterComponent from './MainFilterComponent.vue';
 import CardListComponent from './CardListComponent.vue';
+import axios from 'axios';
+import { store } from '../store';
 export default {
     components: {
         MainFilterComponent,
         CardListComponent,
+    },
+    data(){
+        return {
+            store
+            
+        }
+    },
+    methods: {
+        addPagination(){
+            this.count += 1;
+        }
     }
 }
 </script>
@@ -24,6 +37,7 @@ export default {
                 <div class="row row-cols-5">
                     <CardListComponent />
                 </div>
+                <button type="button" class="btn btn-dark" @click="addPagination">Dark</button>
 
             </div>
         </div>

@@ -3,29 +3,31 @@
         props: {
             title: String,
             url: String,
+            archetype: String,
         }
     }
 </script>
 <template>
-    <!-- <div class="single">
-        <img :src="url" :alt="title">
-        <h2>{{ title }}</h2>
-        <h3>{{ species }}</h3>
-    </div> -->
     <div class="single">
+        <img :src="url" class="img-fluid" :alt="title">
+        <h2>{{ title }}</h2>
+        <h3>{{ archetype }}</h3>
+    </div>
+    <!-- <div class="single">
         <img src="https://via.placeholder.com/300x500" class="img-fluid" alt="title" >
         <h2>Titolo carta</h2>
-        <h3>Specie</h3>
-    </div>
+        <h3>archetype</h3>
+    </div> -->
 </template>
 <style lang="scss" scoped>
     .single {
         background-color: #D48F38;
         text-align: center;
+        height: 500px;
     }
 
     h2 {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
         font-weight: 800;
         text-transform: uppercase;
         padding-top: 1.875rem;
