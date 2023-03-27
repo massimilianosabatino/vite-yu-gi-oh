@@ -16,7 +16,17 @@ export default {
     },
     methods: {
         addPagination(){
-            this.count += 1;
+            this.store.count += 1;
+            this.moreContent();
+        },
+        moreContent(){
+            const offsetCalc = (25 * this.store.count) + 1;
+
+            axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=25&offset=${offsetCalc}`)
+            .then((response) => {
+                const newItems = response.data.data;
+                this.store.cards.push(...newItems);
+            })
         }
     }
 }
@@ -37,7 +47,7 @@ export default {
                 <div class="row row-cols-5">
                     <CardListComponent />
                 </div>
-                <button type="button" class="btn btn-dark" @click="addPagination">Dark</button>
+                <button type="button" class="btn btn-dark" @click="addPagination">show more</button>
 
             </div>
         </div>
