@@ -1,5 +1,5 @@
+//Vendor
+@use "./../node_modules/bootstrap/scss/bootstrap";
+
 @use './assets/sass/abstracts' as *;
 @use './assets/sass/base' as *;
-
-// Vendor
-@import "./../node_modules/bootstrap/scss/bootstrap";
