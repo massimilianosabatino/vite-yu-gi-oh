@@ -12,8 +12,8 @@ export default {
     },
     data(){
         return {
-            store
-            
+            store,
+            byArchetype: []
         }
     },
     methods: {
@@ -30,6 +30,16 @@ export default {
                 this.store.cards.push(...newItems);
             })
         }
+    },
+    computed: {
+        filterArchetype(){
+            if (this.store.selected !== ''){
+                console.log('click')
+                return this.store.cards.filter((el) => el.archetype === this.store.selected)
+            } else {
+                return this.store.cards
+            }
+        }
     }
 }
 </script>
@@ -38,7 +48,7 @@ export default {
     <main class="py-4">
         <div class="container">
             <div class="row">
-                <MainFilterComponent class="select-form"/>
+                <MainFilterComponent class="select-form" @filter="filterArchetype" />
             </div>
             <div class="row my-4 p-5 card-list">
                 <div class="row">
@@ -50,7 +60,7 @@ export default {
                     <div class="text-center w-100" v-if="store.cards.length === 0">
                         <LoaderAppComponent />
                     </div>
-                    <CardListComponent v-else v-cloak/>
+                    <CardListComponent v-else v-cloak :newArray="filterArchetype"/>
                 </div>
                 <button type="button" class="btn btn-dark" @click="addPagination">show more</button>
 
