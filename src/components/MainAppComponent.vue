@@ -35,6 +35,7 @@ export default {
         filterArchetype(){
             if (this.store.selected !== ''){
                 console.log('click')
+                this.store.cardFound
                 return this.store.cards.filter((el) => el.archetype === this.store.selected)
             } else {
                 return this.store.cards
@@ -53,7 +54,7 @@ export default {
             <div class="row my-4 p-5 card-list">
                 <div class="row">
                     <div class="col">
-                            <div class="founded">Found XX cards</div>
+                            <div class="founded">Found {{filterArchetype.length}} cards</div>
                     </div>
                 </div>    
                 <div class="row row-cols-5">
