@@ -38,7 +38,7 @@ export default {
     <main class="py-4">
         <div class="container">
             <div class="row">
-                <MainFilterComponent class="select-form" />
+                <MainFilterComponent class="select-form"/>
             </div>
             <div class="row my-4 p-5 card-list">
                 <div class="row">

@@ -19,9 +19,14 @@
     created() {
       axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=25&offset=0')
       .then((response) => {
-        console.log(response.data.data);
+        console.log('card', response.data.data);
         this.store.cards = response.data.data;
-      })
+      }),
+      axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+        .then((response) => {
+          console.log('archetype', response.data)
+          this.store.archetypes = response.data;
+        })
     },
    }
 </script>
