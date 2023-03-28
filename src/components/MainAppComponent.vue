@@ -1,12 +1,14 @@
 <script>
 import MainFilterComponent from './MainFilterComponent.vue';
 import CardListComponent from './CardListComponent.vue';
+import LoaderAppComponent from './LoaderAppComponent.vue';
 import axios from 'axios';
 import { store } from '../store';
 export default {
     components: {
         MainFilterComponent,
         CardListComponent,
+        LoaderAppComponent,
     },
     data(){
         return {
@@ -45,7 +47,10 @@ export default {
                     </div>
                 </div>    
                 <div class="row row-cols-5">
-                    <CardListComponent />
+                    <div class="text-center w-100" v-if="store.cards.length === 0">
+                        <LoaderAppComponent />
+                    </div>
+                    <CardListComponent v-else v-cloak/>
                 </div>
                 <button type="button" class="btn btn-dark" @click="addPagination">show more</button>
 
