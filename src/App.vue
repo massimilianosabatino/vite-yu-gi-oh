@@ -17,6 +17,7 @@
       }
     },
     created() {
+      //Chiamate limitate per evitare ban durante le prove, prima di build rimuovere limite e sostituire metodo di paginazione
       axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=25&offset=0')
       .then((response) => {
         // console.log('card da axios', response.data.data);
